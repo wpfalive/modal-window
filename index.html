@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>modal-window</title>
+    <style>
+        .modal-box {
+            font-family: Arial, Helvetica, sans-serif;
+            /* 占满整个屏幕 */
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: #000;
+            /* 确保遮罩层在最上层 */
+            z-index: 99999;
+            opacity: 0;
+            /* 一些过渡效果 */
+            -webkit-transition: opacity 400ms ease-in;
+            -moz-transition: opacity 400ms ease-in;
+            transition: opacity 400ms ease-in;
+            /* 在元素上禁用鼠标事件 */
+            pointer-events: none;
+        }
+        .modal-box:target {
+            opacity: 0.8;
+            pointer-events: auto;
+        }
+        .modal-box-dialog {
+            width: 400px;
+            position: relative;
+            margin: 10% auto;
+            padding: 5px 20px 13px 20px;
+            border-radius: 10px;
+            background: #fff;
+        }
+        .other-thing {
+            background: firebrick;
+            width: 300px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1. 有一个按钮或者链接，用户点击它来触发模态框的显示； 
+        2. 模态框显示时，会有一个透明的遮罩层，遮挡住当前整个视口； 
+        3. 模态框内容会以非透明色（通常是白色）出现在视口某个位置（通常是中间）； 
+        4. 模态框内容（通常在右上角）会有一个“关闭”标志，点击它会让模态框隐藏；
+        5. 模态框内容应该是根据实际业务场景所指定的，因此可以为任意结构。 -->
+    <a href="#my-modal-box">显示模态窗口</a>
+    <div class="other-thing">
+        <input type="button" value="click here">
+    </div>
+    <!-- 遮罩层 -->
+    <div id="my-modal-box" class="modal-box">
+        <div class="modal-box-dialog">
+            <!-- 关闭按钮 -->
+            <a href="#close" title="关闭" class="modal-box-close-btn">X</a>
+
+            <!-- 自定义内容。文字、表单等 -->
+            <h2>Modal box basic</h2>
+            <p>这是一个神奇的模态框，采用html5和css3实现</p>
+            <p>你想在哪里使用它都ok</p>
+        </div>
+    </div>
+</body>
+</html>
