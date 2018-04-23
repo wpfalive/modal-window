@@ -17,6 +17,7 @@
             background: #000;
             /* 确保遮罩层在最上层 */
             z-index: 99999;
+            /* opacity不能继承 父元素的opacity会应用到所有子元素上 */
             opacity: 0;
             /* 一些过渡效果 */
             -webkit-transition: opacity 400ms ease-in;
@@ -26,7 +27,7 @@
             pointer-events: none;
         }
         .modal-box:target {
-            opacity: 0.8;
+            opacity: 0.8; /* 这个透明度实际也应用在了modal-box-dialog上*/
             pointer-events: auto;
         }
         .modal-box-dialog {
